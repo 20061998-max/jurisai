@@ -9,7 +9,7 @@
         body { background-color: #f4f6f8; display: flex; justify-content: center; align-items: center; height: 100vh; }
         .screen { display: none; width: 100%; max-width: 950px; height: 90vh; background: white; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.08); flex-direction: column; overflow: hidden; border: 1px solid #dcdcdc; }
         .active { display: flex; }
-        .login-container { max-width: 420px; background: white; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #dcdcdc; }
+        .login-container { width: 100%; max-width: 420px; background: white; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #dcdcdc; margin: 15px; }
         .login-tabs { display: flex; background: #f0f2f5; border-bottom: 1px solid #dcdcdc; }
         .tab-btn { flex: 1; padding: 15px; border: none; background: transparent; font-weight: bold; color: #666; cursor: pointer; font-size: 0.95rem; transition: all 0.2s; }
         .tab-btn.active-tab { background: white; color: #122232; border-bottom: 3px solid #dfb76c; }
@@ -43,6 +43,11 @@
         .btn-approve { background: #e3f2fd; color: #0d47a1; }
         .admin-input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 60px; text-align: center; }
     </style>
+
+    <!-- Carregamento Tradicional Amigável para Navegadores Mobile (Sem type="module") -->
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
+    <script src="https://gstatic.com"></script>
 </head>
 <body>
 
@@ -112,12 +117,8 @@
     </div>
 </div>
 
-<script type="module">
-    import { initializeApp } from "https://gstatic.com";
-    import { getFunctions, httpsCallable } from "https://gstatic.com";
-    import { getDatabase, ref, set, onValue, update, get } from "https://gstatic.com";
-
-    // Credenciais Oficiais e Corrigidas do seu Console do Firebase
+<script>
+    // Inicialização direta do Firebase compatível com navegadores antigos e mobile
     const firebaseConfig = {
         apiKey: "AIzaSyCFDvrtH4_ojz9bQzP2ggcUptFpDSQNv1k",
         authDomain: "://firebaseapp.com",
@@ -129,14 +130,13 @@
         measurementId: "G-8SMKKDRBLV"
     };
 
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-    const functions = getFunctions(app);
-    const callAI = httpsCallable(functions, 'ext-firebase-ai-logic-generateText');
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+    const functions = firebase.functions();
+    const callAI = functions.httpsCallable('ext-firebase-ai-logic-generateText');
 
     let sessaoLocalToken = null;
     let listenerSessaoAtiva = null;
     let tipoLoginAtual = 'usuario';
 
-    const DIRETRIZ_ASSESSOR_SUPREMO = `
-        
+    
