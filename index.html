@@ -102,7 +102,7 @@
     </div>
     <div class="admin-content">
         <div class="admin-card">
-            <h3>⏳ Solicitações de Teste Aguardando Sua Approvação</h3>
+            <h3>⏳ Solicitações de Teste Aguardando Sua Aprovação</h3>
             <div id="listaPendentes"><p style="color:#666;">Nenhuma solicitação pendente.</p></div>
         </div>
         <div class="admin-card">
@@ -117,15 +117,16 @@
     import { getFunctions, httpsCallable } from "https://gstatic.com";
     import { getDatabase, ref, set, onValue, update, get } from "https://gstatic.com";
 
+    // Credenciais Oficiais e Corrigidas do seu Console do Firebase
     const firebaseConfig = {
         apiKey: "AIzaSyCFDvrtH4_ojz9bQzP2ggcUptFpDSQNv1k",
         authDomain: "://firebaseapp.com",
         databaseURL: "https://firebaseio.com",
         projectId: "jurisai-pro-8eff3",
         storageBucket: "jurisai-pro-8eff3.firebasestorage.app",
-        messagingSenderId: "806881446524",
-        appId: "1:806881446524:web:a31df6725c6a60929a97f9",
-        measurementId: "G-0SMKKDRBLV"
+        messagingSenderId: "80881446524",
+        appId: "1:80881446524:web:a31df6725c6a60929a97f9",
+        measurementId: "G-8SMKKDRBLV"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -138,3 +139,4 @@
     let tipoLoginAtual = 'usuario';
 
     const DIRETRIZ_ASSESSOR_SUPREMO = `
+        
